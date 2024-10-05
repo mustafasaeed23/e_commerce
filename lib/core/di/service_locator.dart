@@ -4,7 +4,9 @@ import 'package:e_commerce/core/di/service_locator.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
-GetIt serviceLocator = GetIt.instance;
+final serviceLocator = GetIt.instance;
 
-@InjectableInit()  
-void configureDependencies() => serviceLocator.init(); 
+@InjectableInit()
+Future<void> configureDependencies() async {
+  await serviceLocator.init();
+}

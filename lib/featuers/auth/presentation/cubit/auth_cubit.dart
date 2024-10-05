@@ -10,9 +10,9 @@ import 'package:injectable/injectable.dart';
 
 @singleton
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this._Login, this._register) : super(AuthInitial());
+  AuthCubit(this._login, this._register) : super(AuthInitial());
 
-  final Login _Login;
+  final Login _login;
   final Register _register;
 
   Future<void> register(RegisterRequest requestData) async {
@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> login(LoginRequest requestData) async {
     emit(LoginLoding());
 
-    final result = await _Login(requestData);
+    final result = await _login(requestData);
     result.fold(
       (failure) => emit(LoginError(failure.message)),
       (_) => emit(LoginSuccess()),

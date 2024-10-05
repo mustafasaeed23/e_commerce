@@ -10,12 +10,15 @@ import 'package:e_commerce/featuers/auth/Data/models/register_request.dart';
 import 'package:e_commerce/featuers/auth/Data/models/Register_response.dart';
 import 'package:injectable/injectable.dart';
 
-@Singleton(as:AuthRemoteDataSource )
-class AuthApiDataSource extends AuthRemoteDataSource {
-  final _dio = Dio(BaseOptions(
-    receiveDataWhenStatusError: true,
-    baseUrl: APIConstants.baseUrl,
-  ));
+@Singleton(as: AuthRemoteDataSource)
+class AuthApiDataSource implements AuthRemoteDataSource {
+  // final _dio = Dio(BaseOptions(
+  //   receiveDataWhenStatusError: true,
+  //   baseUrl: APIConstants.baseUrl,
+  // ));
+  final Dio _dio;
+
+  const AuthApiDataSource(this._dio);
 
   @override
   Future<LoginResponse> login(LoginRequest requestBody) async {
@@ -28,8 +31,8 @@ class AuthApiDataSource extends AuthRemoteDataSource {
     } catch (exception) {
       var message = "Failed to Login!";
       if (exception is DioException) {
-        final response = LoginResponse.fromJson(exception.response?.data);
-        if (response.message != null) message = response.message!;
+        final errorMessage = exception.response?.data['message'];
+        if (errorMessage != null) message = errorMessage;
       }
       throw RemoteException(message);
     }
@@ -46,8 +49,8 @@ class AuthApiDataSource extends AuthRemoteDataSource {
     } catch (exception) {
       var message = "Failed to regisetr!";
       if (exception is DioException) {
-        final response = RegisterResponse.fromJson(exception.response?.data);
-        if (response.message != null) message = response.message!;
+        final errorMessage = exception.response?.data['message'];
+        if (errorMessage != null) message = errorMessage;
       }
       throw RemoteException(message);
     }

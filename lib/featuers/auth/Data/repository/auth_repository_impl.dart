@@ -13,17 +13,17 @@ import 'package:injectable/injectable.dart';
 
 @Singleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  final AuthRemoteDataSource _authRemoteDataSource;
-  final AuthLocalDataSource _authLocalDataSource;
+  final AuthRemoteDataSource _remoteDataSource;
+  final AuthLocalDataSource _localDataSource;
 
-  AuthRepositoryImpl(this._authRemoteDataSource, this._authLocalDataSource);
+  AuthRepositoryImpl(this._remoteDataSource, this._localDataSource);
 
   @override
   Future<Either<Failure, User>> login(LoginRequest requestData) async {
     try {
-      final response = await _authRemoteDataSource.login(requestData);
+      final response = await _remoteDataSource.login(requestData);
       if (response.token != null && response.user != null) {
-        await _authLocalDataSource.casheToken(response.token!);
+        await _localDataSource.casheToken(response.token!);
         return Right(response.user!);
       } else {
         return Left(Failure('Error while Trying to login'));
@@ -37,9 +37,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, User>> register(
       RegisterRequest requestData) async {
     try {
-      final response = await _authRemoteDataSource.register(requestData);
+      final response = await _remoteDataSource.register(requestData);
       if (response.token != null && response.user != null) {
-        await _authLocalDataSource.casheToken(response.token!);
+        await _localDataSource.casheToken(response.token!);
         return Right(response.user!);
       } else {
         return Left(Failure('Error while Trying to register'));
