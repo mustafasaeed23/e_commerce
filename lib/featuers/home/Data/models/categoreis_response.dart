@@ -11,9 +11,8 @@ class CategoriesResponse {
       : data = List<CategoryModel>.from(
             json['data']?.map((v) => CategoryModel.fromJson(v)) ?? []) {
     results = json['results'];
-    metadata = json['metadata'] != null
-        ? Metadata.fromJson(json['metadata'])
-        : null;
+    metadata =
+        json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
   }
 
   Map<String, dynamic> toJson() {

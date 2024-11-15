@@ -11,9 +11,8 @@ class BrandsResponse {
       : data = List<BrandModel>.from(
             json['data']?.map((v) => BrandModel.fromJson(v)) ?? []) {
     results = json['results'];
-    metadata = json['metadata'] != null
-        ? Metadata.fromJson(json['metadata'])
-        : null;
+    metadata =
+        json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
   }
 
   Map<String, dynamic> toJson() {

@@ -20,7 +20,7 @@ class AuthSharedPrefLocalDataSource implements AuthLocalDataSource {
   }
 
   @override
-  String getToken()  {
+  String getToken() {
     try {
       return _sharedPref.getString(CasheConstants.tokenKey)!;
     } catch (_) {

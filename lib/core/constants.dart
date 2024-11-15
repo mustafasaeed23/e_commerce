@@ -8,6 +8,10 @@ class APIConstants {
   static const String brandsEndPoint = 'brands';
   // products endPoint
   static const String productsEndPoint = 'products';
+  // cart
+  static const String cartEndPoint = 'cart';
+  // token
+  static const String tokenHeaderKey = 'token';
 }
 
 class CasheConstants {

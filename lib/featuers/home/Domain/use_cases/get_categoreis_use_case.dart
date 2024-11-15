@@ -13,6 +13,4 @@ class GetCategoreisUseCase {
 
   Future<Either<Failure, List<Category>>> call() async =>
       _homeContractRepository.getCategories();
-
-
 }

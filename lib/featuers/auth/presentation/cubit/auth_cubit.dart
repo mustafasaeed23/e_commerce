@@ -20,7 +20,12 @@ class AuthCubit extends Cubit<AuthState> {
 
     final result = await _register(requestData);
     result.fold(
-      (failure) => emit(RegisterError(failure.message)),
+      (failure) {
+        emit(
+          RegisterError(failure.message),
+        );
+        print(failure.message);
+      },
       (_) => emit(RegisterSuccess()),
     );
   }

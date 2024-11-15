@@ -3,6 +3,4 @@ class User {
   final String email;
 
   User({required this.name, required this.email});
-
-  
 }
