@@ -1,4 +1,3 @@
-
 class Brand {
   String? sId;
   String? name;

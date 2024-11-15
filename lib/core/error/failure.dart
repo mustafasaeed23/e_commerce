@@ -1,8 +1,7 @@
- class Failure {
+class Failure {
   final String message;
 
   Failure(this.message);
-  
 }
 
 // class RemoteFailure extends Failure{
@@ -12,4 +11,3 @@
 // class LocalFailure extends Failure{
 //   LocalFailure(super.message);
 // }
-

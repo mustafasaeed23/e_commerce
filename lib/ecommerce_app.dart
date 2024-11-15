@@ -1,10 +1,11 @@
 import 'package:e_commerce/core/theme/my_theme.dart';
 import 'package:e_commerce/featuers/auth/presentation/screens/login_screen.dart';
 import 'package:e_commerce/featuers/auth/presentation/screens/register_screen.dart';
+import 'package:e_commerce/featuers/cart/Presentation/screens/cart_screen.dart';
 import 'package:e_commerce/featuers/home/presentation/screens/home_screen.dart';
 import 'package:e_commerce/featuers/home/presentation/widgets/home_tab.dart';
 import 'package:e_commerce/featuers/products/presentation/screens/product_details_screen.dart';
-import 'package:e_commerce/featuers/products/presentation/screens/products_screen.dart';
+import 'package:e_commerce/featuers/products/presentation/widgets/products_screen.dart';
 import 'package:e_commerce/featuers/profile/presentation/screens/profile_screen.dart';
 import 'package:e_commerce/featuers/wishlist/presentation/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,14 @@ class ECommerceApp extends StatelessWidget {
               HomeScreen.routeName: (context) => const HomeScreen(),
               HomeTab.routeName: (context) => const HomeTab(),
               ProductsScreen.routeName: (context) => const ProductsScreen(),
-              ProductDetailsScreen.routeName:(context)=> const ProductDetailsScreen(),
+              // ProductsScreen.routeName: (context) => const ProductsScreen(),
+              ProductDetailsScreen.routeName: (context) =>
+                  const ProductDetailsScreen(),
               WishListScreen.routeName: (context) => const WishListScreen(),
               ProfileScreen.routeName: (context) => const ProfileScreen(),
+              CartScreen.routeName: (context) => const CartScreen(),
             },
-            initialRoute: HomeScreen.routeName,
+            initialRoute: LoginScreen.routeName,
           );
         });
   }

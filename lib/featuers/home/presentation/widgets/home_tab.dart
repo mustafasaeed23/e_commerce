@@ -1,7 +1,5 @@
-import 'package:e_commerce/core/di/service_locator.dart';
 import 'package:e_commerce/core/theme/my_theme.dart';
 import 'package:e_commerce/core/widgets/search_bar_with_cart.dart';
-import 'package:e_commerce/featuers/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/featuers/home/presentation/widgets/announcment_section.dart';
 import 'package:e_commerce/featuers/home/presentation/widgets/brands_section.dart';
 import 'package:e_commerce/featuers/home/presentation/widgets/categories_section.dart';

@@ -144,16 +144,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 } else if (state is LoginError) {
                                   // show error
                                   UiUtils.hideLoading(context);
-                                   Navigator.of(context)
+                                  Navigator.of(context)
                                       .pushNamed(HomeScreen.routeName);
-
                                 }
                               },
                               child: DefaultElevetedButton(
-                                  onPressed: () {
-                                    login;
-                                  },
-                                  label: "Login"),
+                                  onPressed: login, label: "Login"),
                             ),
                             const SizedBox(
                               height: 15,

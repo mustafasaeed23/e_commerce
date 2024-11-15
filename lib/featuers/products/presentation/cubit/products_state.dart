@@ -1,10 +1,17 @@
-part of 'products_cubit.dart';
+import 'package:e_commerce/featuers/products/Domain/Entities/product_entity.dart';
 
-sealed class ProductsState extends Equatable {
-  const ProductsState();
+abstract class ProductsState {}
 
-  @override
-  List<Object> get props => [];
+class ProductsInitial extends ProductsState {}
+
+class ProductsLoadingState extends ProductsState {}
+
+class ProductsSuccessState extends ProductsState {
+  final List<ProductEntity> productsList;
+  ProductsSuccessState(this.productsList);
 }
 
-final class ProductsInitial extends ProductsState {}
+class ProductsFailureState extends ProductsState {
+  final String message;
+  ProductsFailureState(this.message);
+}

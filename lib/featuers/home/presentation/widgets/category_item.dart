@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/core/theme/my_theme.dart';
 import 'package:e_commerce/featuers/home/Domain/entities/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 
 class CategoryItem extends StatelessWidget {
   CategoryItem(this.category);
@@ -14,11 +16,16 @@ class CategoryItem extends StatelessWidget {
       children: [
         Expanded(
             flex: 8,
-            child: CircleAvatar(
-              backgroundColor: Colors.transparent,
-              radius: 50.r,
-              child: Image.network(category.image ?? "assets/images/proucts2.png")
-              // Image.asset("assets/images/proucts2.png")
+            child: CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl: category.image!,
+              placeholder: (context, url) => Lottie.asset(
+                  'assets/animations/Animation - 1729762541217.json'),
+              errorWidget: (context, url, error) => Icon(
+                Icons.error,
+                size: 30.sp,
+                color: MyTheme.mainColor,
+              ),
             )),
         SizedBox(
           height: 8.h,
@@ -32,7 +39,10 @@ class CategoryItem extends StatelessWidget {
                   fontSize: 14.sp,
                   color: MyTheme.mainColor,
                   fontWeight: FontWeight.normal),
-            ))
+            )),
+        SizedBox(
+          height: 20.h,
+        ),
       ],
     );
   }
